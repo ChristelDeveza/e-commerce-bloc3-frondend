@@ -16,6 +16,7 @@ function CreateProduct() {
       .then((res) => console.log(res.data));
   }
 
+  
   return (
     <div>
       <h1>Ajouter un produit</h1>
@@ -37,7 +38,7 @@ function CreateProduct() {
           />
         </div>
         <button type='button' onClick={handleSubmit}>
-          ajouter
+          Ajouter
         </button>
       </form>
     </div>
