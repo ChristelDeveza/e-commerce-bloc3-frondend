@@ -1,5 +1,6 @@
 
 import './App.css';
+import CreateProduct from './components/CreateProduct';
 import ProductsList from './components/ProductsList';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <div>
         salut
         <ProductsList />
+        <CreateProduct />
       </div>
     </>
   );
