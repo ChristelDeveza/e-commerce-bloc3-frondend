@@ -8,11 +8,10 @@ import ProductsList from './components/ProductsList';
 function App() {
   return (
     <div>
-      <ProductsList />
-      <CreateProduct />
-
       <Router>
         <Routes>
+          <Route path='/' element={<ProductsList />} />
+          <Route path='create' element={<CreateProduct />} />
           <Route path='product/:id' element={<EditProduct />} />
         </Routes>
       </Router>
