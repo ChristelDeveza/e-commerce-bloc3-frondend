@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nixie+One&family=Rubik:wght@300;500&display=swap');
+
+:root {
+  --card-bg: #289EA4;
+  --text-color: #fff;
+}
+
+/* CSS pour ProductsList */
+
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  /* margin-top: 25rem; */
+}
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+gap: 1rem;
+  justify-content: space-around;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 25rem;
+
+  background: var(--card-bg);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  background-size: cover;
+  border-radius: 4px;
+}
+
+.card-description {
+  font-size: small;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+p,
+ul {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+}
