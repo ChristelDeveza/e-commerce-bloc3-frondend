@@ -4,17 +4,19 @@ import { useEffect, useState } from 'react';
 function CreateProduct() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
   const [categoryId, setCategoryId] = useState();
   const [categories, setCategories] = useState([]);
-
+  
   function handleSubmit(e) {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8080/products', {
+      .post('http://localhost:8080/create', {
         name,
         price,
-        category: { id : categoryId },
+        description,
+        categoryId,
       })
       .then((res) => console.log(res.data));
   }
@@ -47,14 +49,22 @@ function CreateProduct() {
           />
         </div>
         <div>
+          <label htmlFor='description'>Description : </label>
+          <input
+            type='text'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
           <label htmlFor='category'>Catégorie : </label>
           <select
-            value={categoryId}
+            value={categories.id}
             onChange={(e) => setCategoryId(e.target.value)}
           >
             <option value=''>Sélectionnez une catégorie</option>
             {categories.map((category) => (
-              <option key={category.id} value={category.category_id}>
+              <option key={category.id} value={category.id}>
                 {category.libelle}
               </option>
             ))}
