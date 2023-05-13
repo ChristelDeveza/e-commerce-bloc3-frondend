@@ -23,7 +23,7 @@ const Navbar = () => {
         </li>
         <li className='nav-item'>
           <Link to='products' className='nav-link'>
-            Catalogne
+            Catalogue
           </Link>
         </li>
         <li className='nav-item'>

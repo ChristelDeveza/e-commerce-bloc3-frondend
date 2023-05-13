@@ -22,19 +22,16 @@ function ProductsList() {
           <>
             <li className='card' key={product.product_id}>
               <div className='card-image'>
-              <DeleteProduct product={product} />
+                <DeleteProduct product={product} />
                 <img src={photo} alt='picture' />
               </div>
-              <div className='note'>Catégorie</div>
+              <div className='note'>{product.category.libelle}</div>
               <div className='card-title'>
-                {product.name} <br/><span className='price'>{product.price} €</span>
+                {product.name} <br />
+                <span className='price'>{product.price} €</span>
               </div>
-              <div className='card-description'>
-                Descripion Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Totam, exercitationem itaque consequatur hic soluta dolor{' '}
-              </div>
+              <div className='card-description'>{product.description}</div>
             </li>
-           
           </>
         ))}
       </ul>
