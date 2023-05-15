@@ -2,17 +2,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import DeleteProduct from './DeleteProduct';
 import '../css/ProductList.css';
-import photo from '../assets/photo2.jpg';
+import photo from '../../../commercial/src/main/resources/static/photo/56/heather-ford-5gkYsrH_ebY-unsplash.jpg';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
+  console.log(products);
+  // const url = "../../../commercial/src/main/resources/static"
 
   useEffect(() => {
     axios
       .get('http://localhost:8080/products')
       .then((res) => setProducts(res.data));
   }, []);
-
   return (
     <div className='container'>
       {' '}
@@ -24,6 +25,8 @@ function ProductsList() {
               <div className='card-image'>
                 <DeleteProduct product={product} />
                 <img src={photo} alt='picture' />
+
+                {/* <img src={`../../../commercial/src/main/resources/static${product.photosImagePath}`} alt='picture' /> */}
               </div>
               <div className='note'>{product.category?.libelle}</div>
               <div className='card-title'>
