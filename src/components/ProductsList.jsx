@@ -25,7 +25,7 @@ function ProductsList() {
                 <DeleteProduct product={product} />
                 <img src={photo} alt='picture' />
               </div>
-              <div className='note'>{product.category.libelle}</div>
+              <div className='note'>{product.category?.libelle}</div>
               <div className='card-title'>
                 {product.name} <br />
                 <span className='price'>{product.price} €</span>
