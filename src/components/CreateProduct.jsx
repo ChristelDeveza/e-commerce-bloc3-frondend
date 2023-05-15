@@ -7,18 +7,59 @@ function CreateProduct() {
   const [description, setDescription] = useState('');
   const [categoryId, setCategoryId] = useState();
   const [categories, setCategories] = useState([]);
-  
+  const [image, setImage] = useState('');
+
+  // console.log(name, price, description, categoryId, image);
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+
+  //   axios
+  //     .post('http://localhost:8080/create', {
+  //       name,
+  //       price,
+  //       description,
+  //       categoryId,
+  //     })
+  //     .then((res) => console.log(res.data));
+  // }
+
   function handleSubmit(e) {
     e.preventDefault();
 
+    const formData = new FormData();
+    const data = JSON.stringify({
+      name,
+      price,
+      description,
+      categoryId,
+    });
+   
+    formData.append(
+      'postProduct',
+      new Blob([data], { type: 'application/json' })
+    );
+
+    formData.append('image', image);
+
+      
+
+    // for (let key of formData.entries()) {
+    //   console.log(key[0] + ', ' + key[1]);
+    // }
+
     axios
-      .post('http://localhost:8080/create', {
-        name,
-        price,
-        description,
-        categoryId,
+      .post('http://localhost:8080/create', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       })
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   useEffect(() => {
@@ -31,7 +72,7 @@ function CreateProduct() {
   return (
     <div>
       <h1>Ajouter un produit</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType='multipart/form-data'>
         <div>
           <label htmlFor='name'>Libellé du produit : </label>
           <input
@@ -70,7 +111,15 @@ function CreateProduct() {
             ))}
           </select>
         </div>
-        <button type='button' onClick={handleSubmit}>
+        <div>
+          <label htmlFor='photo'>Photo : </label>
+          <input
+            type='file'
+            accept='image/png, image/jpeg, image/jpg'
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </div>
+        <button type='submit' onClick={handleSubmit}>
           Ajouter
         </button>
       </form>
