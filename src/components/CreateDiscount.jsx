@@ -1,17 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { useState } from 'react';
 
 function CreateDiscount() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [pourcentDiscount, setPourcentDiscount] = useState(null);
-  
-  
+  const [pourcentDiscount, setPourcentDiscount] = useState(0);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    axios
+      .post('http://localhost:8080/discount', {
+        startDate,
+        endDate,
+        percentage: pourcentDiscount,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div>
       <h1>Créer une nouvelle promotion</h1>
       <form onSubmit={handleSubmit}>
-                <div>
+        <div>
           <label htmlFor='startDate'>Date de commencement : </label>
           <input
             type='date'
@@ -35,9 +47,10 @@ function CreateDiscount() {
             onChange={(e) => setPourcentDiscount(e.target.value)}
           />
         </div>
-        </form>
+        <button type='submit'>Créer</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default CreateDiscount
+export default CreateDiscount;
