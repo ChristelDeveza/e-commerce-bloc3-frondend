@@ -8,7 +8,7 @@ function EditProduct() {
   const [description, setDescription] = useState('');
   const [categoryId, setCategoryId] = useState();
   const [categories, setCategories] = useState([]);
-    const { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     // Get request by id
@@ -17,7 +17,7 @@ function EditProduct() {
       .then((res) => {
         setName(res.data.name);
         setPrice(res.data.price);
-        setDescription(res.data.description)
+        setDescription(res.data.description);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -38,7 +38,7 @@ function EditProduct() {
         name,
         price,
         description,
-        categoryId
+        categoryId,
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
