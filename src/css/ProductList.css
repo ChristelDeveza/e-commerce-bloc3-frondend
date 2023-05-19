@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nixie+One&family=Rubik:wght@300;500&display=swap');
 
 :root {
-  --card-bg: #289EA4;
+  --card-bg: #289ea4;
   --text-color: #fff;
 }
 
@@ -22,7 +22,7 @@ ul {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-gap: 1rem;
+  gap: 1rem;
   justify-content: space-around;
 }
 
@@ -70,4 +70,8 @@ ul {
   line-height: 2.4rem;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
+}
+
+.discount-price {
+  color: red;
 }

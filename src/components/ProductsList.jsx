@@ -31,7 +31,14 @@ function ProductsList() {
               <div className='note'>{product.category?.libelle}</div>
               <div className='card-title'>
                 {product.name} <br />
-                <span className='price'>{product.price} €</span>
+                <span className='price'>
+                  {product.price} €{' '}
+                  <span className='discount-price'>
+                    {' '}
+                    {product.discountedPrice != null &&
+                      `| Promo ${product.discountedPrice} € (-${product.discount?.percentage} %)`}
+                  </span>
+                </span>
               </div>
               <div className='card-description'>{product.description}</div>
             </li>
