@@ -19,6 +19,9 @@ function CreateDiscount() {
       .catch((err) => console.log(err));
   }
 
+  
+
+  
   return (
     <div>
       <h1>Créer une nouvelle promotion</h1>
