@@ -6,10 +6,14 @@ function EditProduct() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [category, setCategory] = useState()
   const [categoryId, setCategoryId] = useState();
   const [categories, setCategories] = useState([]);
+  const [discount, setDiscount] = useState()
+  const [discountedPrice, setDiscountedPrice] = useState()
   const { id } = useParams();
-
+console.log(discount)
+console.log(discountedPrice)
   useEffect(() => {
     // Get request by id
     axios
@@ -18,6 +22,9 @@ function EditProduct() {
         setName(res.data.name);
         setPrice(res.data.price);
         setDescription(res.data.description);
+        setCategory(res.data.category);
+        setDiscount(res.data.discount);
+        setDiscountedPrice(res.data.discountedPrice)
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -39,6 +46,8 @@ function EditProduct() {
         price,
         description,
         categoryId,
+        discountId: discount.id,
+        discountedPrice
       })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
@@ -78,11 +87,16 @@ function EditProduct() {
         </div>
         <div>
           <label htmlFor='category'>Catégorie : </label>
+          <input
+            type='text'
+            value={category?.libelle}
+            onChange={(e) => setCategory(e.target.value)}
+          />
           <select
             value={categories.id}
             onChange={(e) => setCategoryId(e.target.value)}
           >
-            <option value=''>Sélectionnez une catégorie</option>
+            <option value=''>Changer la catégorie</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.libelle}
@@ -90,6 +104,25 @@ function EditProduct() {
             ))}
           </select>
         </div>
+
+        <div>
+        <label htmlFor='discount'>Promotion : </label>
+          <input
+            type='number'
+            value={discount?.percentage}
+            onChange={(e) => setDiscount(e.target.value)}
+          /> 
+        </div>
+
+
+<div>
+          <label htmlFor='discountedPrice'>Prix après promotion : </label>
+          <input
+            type='number'
+            value={discountedPrice}
+            onChange={(e) => setDiscountedPrice(e.target.value)}
+          />
+</div>
         <button type='submit'>Modifier</button>
       </form>
     </div>
