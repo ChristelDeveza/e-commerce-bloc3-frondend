@@ -10,22 +10,25 @@ import './css/Navbar.css';
 import Login from './components/Login';
 import CreateDiscount from './components/CreateDiscount';
 import ApplyDiscount from './components/ApplyDiscount';
+import UserContextIsOnline from './context/UserContext';
 
 function App() {
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='products' element={<ProductsList />} />
-          <Route path='connexion' element={<Login />} />
-          <Route path='create' element={<CreateProduct />} />
-          <Route path='product/:id' element={<EditProduct />} />
-          <Route path='discount' element={<CreateDiscount />} />
-          <Route path='discounted-product/:id' element={<ApplyDiscount />} />
-        </Routes>
-      </Router>
+      <UserContextIsOnline>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='products' element={<ProductsList />} />
+            <Route path='connexion' element={<Login />} />
+            <Route path='create' element={<CreateProduct />} />
+            <Route path='product/:id' element={<EditProduct />} />
+            <Route path='discount' element={<CreateDiscount />} />
+            <Route path='discounted-product/:id' element={<ApplyDiscount />} />
+          </Routes>
+        </Router>
+      </UserContextIsOnline>
     </div>
   );
 }

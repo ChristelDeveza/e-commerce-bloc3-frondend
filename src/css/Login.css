@@ -1,0 +1,121 @@
+/*Login form */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+.title-login {
+  color: #2d3e50;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  color: #2d3e50;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.login-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ecf0f3;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.login-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #3498db;
+}
+
+.login-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.login-button:hover {
+  background-color: #2980b9;
+}
+
+/* User data form*/
+
+.userForm-div {
+  background-color: #9eacc7;
+  padding: 2rem;
+  background: rgba(14, 18, 17, 0.32);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.1px);
+  -webkit-backdrop-filter: blur(10.1px);
+  border: 1px solid rgba(195, 209, 208, 0.4);
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.label-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #2d3e50;
+  font-size: 16px;
+}
+
+.imput-size {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ecf0f3;
+  margin-top: 5px;
+  font-size: 16px;
+  width: 50rem;
+}
+
+.btn-userdatas {
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 12px 24px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.btn-userdatas:hover {
+  background-color: #2980b9;
+}
