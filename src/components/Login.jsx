@@ -26,7 +26,7 @@ function Login() {
           localStorage.setItem('user', JSON.stringify(res.data));
         })
         .then(() => {
-          navigate('/create', { replace: true });
+          navigate('/dashboard', { replace: true });
         })
         // If error
         .catch((err) => {

@@ -6,6 +6,7 @@ import { UserContext } from '../context/UserContext';
 import '../css/ProductList.css';
 // import photo from '../../../commercial/src/main/resources/static/photo/56/heather-ford-5gkYsrH_ebY-unsplash.jpg';
 import photo from '../assets/background2.jpg';
+import BackToDashboardButton from './BackToDashboardButton';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -53,6 +54,7 @@ function ProductsList() {
     <div className='container'>
       {' '}
       <h1>Catalogues de nos produits</h1>
+      {isOnline && <BackToDashboardButton />}
       <button onClick={() => handleCategoryFilter('Alimentation')}>
         {selectedCategories.includes('Alimentation')
           ? 'Annuler filtre Alimentation'
@@ -75,6 +77,13 @@ function ProductsList() {
                         <Link to={`/products/${product.id}`}>
                           <button type='button' className='modify-button'>
                             Modifier
+                          </button>
+                        </Link>
+                      )}
+                      {isOnline && (
+                        <Link to={`/discounted-product/${product.id}`}>
+                          <button type='button' className='discount-button'>
+                            Promotion
                           </button>
                         </Link>
                       )}
@@ -108,6 +117,13 @@ function ProductsList() {
                         <Link to={`/products/${product.id}`}>
                           <button type='button' className='modify-button'>
                             Modifier
+                          </button>
+                        </Link>
+                      )}
+                      {isOnline && (
+                        <Link to={`/discounted-product/${product.id}`}>
+                          <button type='button' className='discount-button'>
+                            Promotion
                           </button>
                         </Link>
                       )}
