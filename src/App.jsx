@@ -11,6 +11,7 @@ import Login from './components/Login';
 import CreateDiscount from './components/CreateDiscount';
 import ApplyDiscount from './components/ApplyDiscount';
 import UserContextIsOnline from './context/UserContext';
+import Dashboard from './page/Dashboard';
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
             <Route path='products/:id' element={<EditProduct />} />
             <Route path='products' element={<ProductsList />} />
             <Route path='connexion' element={<Login />} />
+            <Route path='dashboard' element={<Dashboard />} />
             <Route path='create' element={<CreateProduct />} />
-
             <Route path='discount' element={<CreateDiscount />} />
             <Route path='discounted-product/:id' element={<ApplyDiscount />} />
           </Routes>
