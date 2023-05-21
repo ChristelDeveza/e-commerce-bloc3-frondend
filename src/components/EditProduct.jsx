@@ -6,14 +6,13 @@ function EditProduct() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState();
   const [categoryId, setCategoryId] = useState();
   const [categories, setCategories] = useState([]);
-  const [discount, setDiscount] = useState()
-  const [discountedPrice, setDiscountedPrice] = useState()
+  const [discount, setDiscount] = useState();
+  const [discountedPrice, setDiscountedPrice] = useState();
   const { id } = useParams();
-console.log(discount)
-console.log(discountedPrice)
+
   useEffect(() => {
     // Get request by id
     axios
@@ -24,7 +23,7 @@ console.log(discountedPrice)
         setDescription(res.data.description);
         setCategory(res.data.category);
         setDiscount(res.data.discount);
-        setDiscountedPrice(res.data.discountedPrice)
+        setDiscountedPrice(res.data.discountedPrice);
       })
       .catch((err) => console.log(err));
   }, [id]);
@@ -41,14 +40,20 @@ console.log(discountedPrice)
 
     // PUT request to update product
     axios
-      .put(`http://localhost:8080/update/${id}`, {
-        name,
-        price,
-        description,
-        categoryId,
-        discountId: discount.id,
-        discountedPrice
-      })
+      .put(
+        `http://localhost:8080/update/${id}`,
+        {
+          name,
+          price,
+          description,
+          categoryId,
+        },
+        {
+          headers: {
+            Authorization: 'Bearer my-token',
+          },
+        }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -79,7 +84,7 @@ console.log(discountedPrice)
         </div>
         <div>
           <label htmlFor='description'>Description du produit : </label>
-          <input
+          <textarea
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -106,23 +111,14 @@ console.log(discountedPrice)
         </div>
 
         <div>
-        <label htmlFor='discount'>Promotion : </label>
-          <input
-            type='number'
-            value={discount?.percentage}
-            onChange={(e) => setDiscount(e.target.value)}
-          /> 
+          {discount?.percentage != null && (
+            <>
+              <p>Promotion appliquée : {discount?.percentage} %</p>
+              <p>Prix après promotion : {discountedPrice} €</p>
+            </>
+          )}
         </div>
 
-
-<div>
-          <label htmlFor='discountedPrice'>Prix après promotion : </label>
-          <input
-            type='number'
-            value={discountedPrice}
-            onChange={(e) => setDiscountedPrice(e.target.value)}
-          />
-</div>
         <button type='submit'>Modifier</button>
       </form>
     </div>
