@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Logout from './Logout';
 
 function CreateProduct() {
   const [name, setName] = useState('');
@@ -71,6 +72,7 @@ function CreateProduct() {
   return (
     <div>
       <h1>Ajouter un produit</h1>
+      <Logout />
       <form onSubmit={handleSubmit} encType='multipart/form-data'>
         <div>
           <label htmlFor='name'>Libellé du produit : </label>

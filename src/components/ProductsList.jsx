@@ -70,7 +70,7 @@ function ProductsList() {
                 <li className='card' key={product.id}>
                   <div className='card-image'>
                     <div className='button-container'>
-                      <DeleteProduct product={product} />
+                      {isOnline && <DeleteProduct product={product} />}
                       {isOnline && (
                         <Link to={`/products/${product.id}`}>
                           <button type='button' className='modify-button'>
@@ -103,7 +103,7 @@ function ProductsList() {
                 <li className='card' key={product.id}>
                   <div className='card-image'>
                     <div className='button-container'>
-                      <DeleteProduct product={product} />
+                      {isOnline && <DeleteProduct product={product} />}
                       {isOnline && (
                         <Link to={`/products/${product.id}`}>
                           <button type='button' className='modify-button'>
