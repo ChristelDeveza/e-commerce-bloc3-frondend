@@ -34,15 +34,13 @@ function CreateProduct() {
       description,
       categoryId,
     });
-   
+
     formData.append(
       'postProduct',
       new Blob([data], { type: 'application/json' })
     );
 
     formData.append('image', image);
-
-      
 
     // for (let key of formData.entries()) {
     //   console.log(key[0] + ', ' + key[1]);
@@ -52,6 +50,7 @@ function CreateProduct() {
       .post('http://localhost:8080/create', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: 'Bearer my-token',
         },
       })
       .then((res) => {
