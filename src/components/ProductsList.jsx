@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import DeleteProduct from './DeleteProduct';
+import { UserContext } from '../context/UserContext';
 import '../css/ProductList.css';
-import photo from '../../../commercial/src/main/resources/static/photo/56/heather-ford-5gkYsrH_ebY-unsplash.jpg';
+// import photo from '../../../commercial/src/main/resources/static/photo/56/heather-ford-5gkYsrH_ebY-unsplash.jpg';
+import photo from '../assets/background2.jpg';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  console.log(products);
-  // const url = "../../../commercial/src/main/resources/static"
+  const { isOnline } = useContext(UserContext);
 
+  // const url = "../../../commercial/src/main/resources/static"
+  console.log(isOnline);
   useEffect(() => {
     axios
       .get('http://localhost:8080/products')
@@ -63,11 +67,19 @@ function ProductsList() {
         {filteredProducts.length > 0
           ? filteredProducts.map((product) => (
               <>
-                <li className='card' key={product.product_id}>
+                <li className='card' key={product.id}>
                   <div className='card-image'>
-                    <DeleteProduct product={product} />
+                    <div className='button-container'>
+                      <DeleteProduct product={product} />
+                      {isOnline && (
+                        <Link to={`/products/${product.id}`}>
+                          <button type='button' className='modify-button'>
+                            Modifier
+                          </button>
+                        </Link>
+                      )}
+                    </div>
                     <img src={photo} alt='picture' />
-
                     {/* <img src={`../../../commercial/src/main/resources/static/${product.photosImagePath}`} alt='picture' /> */}
                   </div>
                   <div className='note'>{product.category?.libelle}</div>
@@ -88,12 +100,24 @@ function ProductsList() {
             ))
           : products.map((product) => (
               <>
-                <li className='card' key={product.product_id}>
+                <li className='card' key={product.id}>
                   <div className='card-image'>
-                    <DeleteProduct product={product} />
+                    <div className='button-container'>
+                      <DeleteProduct product={product} />
+                      {isOnline && (
+                        <Link to={`/products/${product.id}`}>
+                          <button type='button' className='modify-button'>
+                            Modifier
+                          </button>
+                        </Link>
+                      )}
+                    </div>
                     <img src={photo} alt='picture' />
 
-                    {/* <img src={`../../../commercial/src/main/resources/static${product.photosImagePath}`} alt='picture' /> */}
+                    {/* <img
+                      src={`../../../commercial/src/main/resources/static/${product?.photosImagePath}`}
+                      alt='picture'
+                    /> */}
                   </div>
                   <div className='note'>{product.category?.libelle}</div>
                   <div className='card-title'>

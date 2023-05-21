@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 function DeleteProduct({ product }) {
-  
   //console.log(product.id);
 
   function deleteById() {
@@ -14,7 +13,7 @@ function DeleteProduct({ product }) {
   return (
     <div>
       {product.id && (
-        <button type='button' onClick={deleteById}>
+        <button type='button' className='delete-button' onClick={deleteById}>
           Supprimer
         </button>
       )}
