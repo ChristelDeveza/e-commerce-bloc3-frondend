@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useEffect, useState, useRef, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import '../css/ApplyDiscount.css';
+import BackToDashboardButton from './BackToDashboardButton';
 
 function ApplyDiscount() {
   const [productById, setProductById] = useState('');
@@ -71,19 +73,35 @@ function ApplyDiscount() {
   }
 
   return (
-    <div>
+    <div className='apply-container'>
       {isOnline ? (
         <div>
-          <h1>Appliquer une promotion à un produit</h1>
-          <div>{productById.id}</div>
-          <div>{productById.name}</div>
-          <div>{productById.description}</div>
-          <div>{productById.price}</div>
+          <h1 className='apply-title'>Appliquer une promotion à un produit</h1>
+          <div>
+            <p className='apply-label'>Numéro du produit</p>
+            <p className='apply-input'>{productById.id}</p>
+          </div>
+          <div>
+            <p className='apply-label'>Nom du produit</p>
+            <p className='apply-input'>{productById.name}</p>
+          </div>
+          <div>
+            {' '}
+            <p className='apply-label'>Description</p>
+            <p className='apply-input'>{productById.description}</p>
+          </div>
+          <div>
+            {' '}
+            <p className='apply-label'>Prix</p>
+            <p className='apply-input'>{productById.price} €</p>
+          </div>
 
-          <form onSubmit={handleSubmit}>
+          <form className='form-container' onSubmit={handleSubmit}>
             <div>
-              <label htmlFor='category'>Promotion : </label>
-              <select ref={discountIdRef}>
+              <label className='apply-label' htmlFor='promotion'>
+                Promotion :{' '}
+              </label>
+              <select className='apply-select' ref={discountIdRef}>
                 <option value=''>Sélectionnez une promotion</option>
                 {selectDiscount.map((discount) => (
                   <option key={discount.id} value={discount.id}>
@@ -92,8 +110,11 @@ function ApplyDiscount() {
                 ))}
               </select>
             </div>
-            <button type='submit'>Appliquer</button>
+            <button className='apply-button' type='submit'>
+              Appliquer
+            </button>
           </form>
+          <BackToDashboardButton />
         </div>
       ) : (
         <p className='message-access'>

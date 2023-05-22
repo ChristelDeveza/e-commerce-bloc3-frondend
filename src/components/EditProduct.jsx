@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import '../css/EditProduct.css';
+import BackToDashboardButton from './BackToDashboardButton';
 
 function EditProduct() {
   const [name, setName] = useState('');
@@ -72,47 +74,60 @@ function EditProduct() {
   };
 
   return (
-    <div>
+    <div className='edit-container'>
       {isOnline ? (
         <div>
-          <h1>Modifier un produit</h1>
+          <h1 className='edit-title'>Modifier un produit</h1>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className='edit-input-container'>
               <label htmlFor='id'>Numéro du produit : </label>
-              <input type='number' value={id} readOnly />
+              <input className='edit-input' type='number' value={id} readOnly />
             </div>
-            <div>
-              <label htmlFor='name'>Libellé du produit : </label>
+            <div className='edit-input-container'>
+              <label htmlFor='name' className='edit-label'>
+                Libellé du produit :{' '}
+              </label>
               <input
+                className='edit-input'
                 type='text'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor='price'>Prix : </label>
+            <div className='edit-input-container'>
+              <label htmlFor='price' className='edit-label'>
+                Prix :{' '}
+              </label>
               <input
+                className='edit-input'
                 type='number'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor='description'>Description du produit : </label>
+            <div className='edit-input-container'>
+              <label htmlFor='description' className='edit-label'>
+                Description du produit :{' '}
+              </label>
               <textarea
+                className='edit-input description'
                 type='text'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor='category'>Catégorie : </label>
+            <div className='edit-input-container'>
+              <label htmlFor='category' className='edit-label'>
+                Catégorie :{' '}
+              </label>
               <input
+                className='edit-input'
                 type='text'
                 value={category?.libelle}
                 onChange={(e) => setCategory(e.target.value)}
               />
               <select
+                className='edit-select'
                 value={categories.id}
                 onChange={(e) => setCategoryId(e.target.value)}
               >
@@ -125,17 +140,35 @@ function EditProduct() {
               </select>
             </div>
 
-            <div>
+            <div className='edit-input-container'>
               {discount?.percentage != null && (
                 <>
-                  <p>Promotion appliquée : {discount?.percentage} %</p>
-                  <p>Prix après promotion : {discountedPrice} €</p>
+                  <p className='promo-discount'>
+                    Cet article est en promotion. En cas de changement de prix,
+                    merci de réappliquer la promotion afin de mettre à jour le
+                    prix après promotion ou de changer la promotion.
+                  </p>
+                  <p className='promo-discount'>
+                    Promotion appliquée : {discount?.percentage} %
+                  </p>
+                  <p className='promo-discount'>
+                    Prix après promotion : {discountedPrice} €
+                  </p>
+                  <p className='promo-discount'>
+                    Date de début : {discount.startDate}
+                  </p>
+                  <p className='promo-discount'>
+                    Date de fin : {discount.startDate}
+                  </p>
                 </>
               )}
             </div>
 
-            <button type='submit'>Modifier</button>
+            <button className='edit-button' type='submit'>
+              Modifier
+            </button>
           </form>
+          <BackToDashboardButton />
         </div>
       ) : (
         <p className='message-access'>

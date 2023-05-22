@@ -60,30 +60,46 @@ function ProductsList() {
       {' '}
       <h1>Catalogues de nos produits</h1>
       {isOnline && <BackToDashboardButton />}
-      <button onClick={() => handleCategoryFilter('Viande')}>
+      <h3 className='filter'>Fitres par catégories</h3>
+      <button
+        className='filter-buttons'
+        onClick={() => handleCategoryFilter('Viande')}
+      >
         {selectedCategories.includes('Viande')
           ? 'Annuler filtre Viande'
-          : 'Filtrer Viande'}
+          : 'Viande'}
       </button>
-      <button onClick={() => handleCategoryFilter('Vêtements')}>
+      <button
+        className='filter-buttons'
+        onClick={() => handleCategoryFilter('Vêtements')}
+      >
         {selectedCategories.includes('Vêtements')
           ? 'Annuler filtre Vêtements'
-          : 'Filtrer Vêtements'}
+          : 'Vêtements'}
       </button>
-      <button onClick={() => handleCategoryFilter('Poisson')}>
+      <button
+        className='filter-buttons'
+        onClick={() => handleCategoryFilter('Poisson')}
+      >
         {selectedCategories.includes('Poisson')
           ? 'Annuler filtre Poisson'
-          : 'Filtrer Poisson'}
+          : 'Poisson'}
       </button>
-      <button onClick={() => handleCategoryFilter('Fruits')}>
+      <button
+        className='filter-buttons'
+        onClick={() => handleCategoryFilter('Fruits')}
+      >
         {selectedCategories.includes('Fruits')
           ? 'Annuler filtre Fruits'
-          : 'Filtrer Fruits'}
+          : 'Fruits'}
       </button>
-      <button onClick={() => handleCategoryFilter('Légumes')}>
+      <button
+        className='filter-buttons'
+        onClick={() => handleCategoryFilter('Légumes')}
+      >
         {selectedCategories.includes('Légumes')
           ? 'Annuler filtre Légumes'
-          : 'Filtrer Légumes'}
+          : 'Légumes'}
       </button>
       <ul>
         {filteredProducts.length > 0

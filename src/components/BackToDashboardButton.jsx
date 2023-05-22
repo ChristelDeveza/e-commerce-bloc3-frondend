@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import '../css/BackToDashboard.css';
 
 function BackToDashboardButton() {
   const navigate = useNavigate();
@@ -8,7 +9,11 @@ function BackToDashboardButton() {
   }
   return (
     <div>
-      <button type='submit' onClick={backToDashboard}>
+      <button
+        className='dashboard-button'
+        type='submit'
+        onClick={backToDashboard}
+      >
         Tableau de bord
       </button>
     </div>

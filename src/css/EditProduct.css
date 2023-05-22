@@ -1,0 +1,80 @@
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 25rem;
+  padding: 5rem;
+}
+
+.edit-title {
+  color: #2d3e50;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.edit-label {
+  color: #2d3e50;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.edit-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ecf0f3;
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 25rem;
+}
+
+.edit-input.description {
+  height: 10rem;
+}
+
+.edit-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #3498db;
+}
+
+.edit-select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ecf0f3;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.edit-select:focus {
+  outline: none;
+  box-shadow: 0 0 5px #3498db;
+}
+
+.edit-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.edit-button:hover {
+  background-color: #2980b9;
+}
+
+.promo-discount {
+  font-size: large;
+}
