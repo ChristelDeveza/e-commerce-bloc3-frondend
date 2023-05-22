@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from 'axios';
 import { useContext } from 'react';
+import Swal from 'sweetalert2';
 import { UserContext } from '../context/UserContext';
 
 function DeleteProduct({ product }) {
@@ -13,6 +14,13 @@ function DeleteProduct({ product }) {
           headers: {
             Authorization: `Bearer ${isOnline}`,
           },
+        })
+        .then(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Confirmation',
+            text: 'Votre produit a été supprimé avec succès !',
+          }).then(() => window.location.reload());
         })
         .catch(() => console.error('error'));
     }
