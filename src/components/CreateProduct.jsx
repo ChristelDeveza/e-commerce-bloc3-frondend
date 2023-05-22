@@ -84,9 +84,9 @@ function CreateProduct() {
   }, []);
 
   return (
-    <div className='create-container'>
+    <div>
       {isOnline ? (
-        <div>
+        <div className='create-container'>
           <h1 className='create-title'>Ajouter un produit</h1>
           <form
             className='form-container'

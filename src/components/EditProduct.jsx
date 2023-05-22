@@ -88,9 +88,9 @@ function EditProduct() {
   };
 
   return (
-    <div className='edit-container'>
+    <div>
       {isOnline ? (
-        <div>
+        <div className='edit-container'>
           <h1 className='edit-title'>Modifier un produit</h1>
           <form onSubmit={handleSubmit}>
             <div className='edit-input-container'>
