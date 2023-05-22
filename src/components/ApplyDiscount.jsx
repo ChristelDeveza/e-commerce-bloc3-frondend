@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import '../css/ApplyDiscount.css';
+import BackToDashboardButton from './BackToDashboardButton';
 
 function ApplyDiscount() {
   const [productById, setProductById] = useState('');
@@ -113,6 +114,7 @@ function ApplyDiscount() {
               Appliquer
             </button>
           </form>
+          <BackToDashboardButton />
         </div>
       ) : (
         <p className='message-access'>

@@ -1,13 +1,12 @@
 import photo from '../assets/photo.jpg';
-
+import legumes from '../assets/legumes.jpg';
 
 function Home() {
   return (
     <div>
       <div>
-        
         <h1 className='header'>BIENVENUE</h1>
-        <h3  className='intro'>
+        <h3 className='intro'>
           Découvrez une expérience d&apos;achat unique, où qualité et
           satisfaction se rencontrent.
         </h3>
@@ -20,7 +19,7 @@ function Home() {
       <div className='home'>
         <img className='img-home' src={photo} alt='photo' />
         <img className='img-home' src={photo} alt='photo' />
-        <img className='img-home' src={photo} alt='photo' />
+        <img className='img-home' src={legumes} alt='photo' />
       </div>
     </div>
   );

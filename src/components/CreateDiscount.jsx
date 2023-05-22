@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import '../css/CreateDiscount.css';
+import BackToDashboardButton from './BackToDashboardButton';
 
 function CreateDiscount() {
   const [startDate, setStartDate] = useState('');
@@ -34,37 +36,47 @@ function CreateDiscount() {
   return (
     <div>
       {isOnline ? (
-        <div>
+        <div className='discount-container'>
           <h1>Créer une nouvelle promotion</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor='startDate'>Date de commencement : </label>
+              <label className='discount-label' htmlFor='startDate'>
+                Date de commencement :{' '}
+              </label>
               <input
+                className='discount-input'
                 type='date'
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor='endDate'>Date de fin : </label>
+              <label className='discount-label' htmlFor='endDate'>
+                Date de fin :{' '}
+              </label>
               <input
+                className='discount-input'
                 type='date'
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor='pourcentDiscount'>
+              <label className='discount-label' htmlFor='pourcentDiscount'>
                 Pourcentage à appliquer :{' '}
               </label>
               <input
+                className='discount-input'
                 type='number'
                 value={pourcentDiscount}
                 onChange={(e) => setPourcentDiscount(e.target.value)}
               />
             </div>
-            <button type='submit'>Créer</button>
+            <button className='discount-create-button' type='submit'>
+              Créer
+            </button>
           </form>
+          <BackToDashboardButton />
         </div>
       ) : (
         <p className='message-access'>

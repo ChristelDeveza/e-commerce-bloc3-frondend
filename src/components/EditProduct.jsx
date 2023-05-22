@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import '../css/EditProduct.css';
+import BackToDashboardButton from './BackToDashboardButton';
 
 function EditProduct() {
   const [name, setName] = useState('');
@@ -167,6 +168,7 @@ function EditProduct() {
               Modifier
             </button>
           </form>
+          <BackToDashboardButton />
         </div>
       ) : (
         <p className='message-access'>

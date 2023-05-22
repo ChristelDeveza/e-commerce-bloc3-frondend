@@ -67,6 +67,7 @@
   font-size: 18px;
   cursor: pointer;
   margin: 0 auto;
+  margin-bottom: 2rem;
   display: block;
 }
 
@@ -75,5 +76,5 @@
 }
 
 .promo-discount {
- font-size: large;
+  font-size: large;
 }
