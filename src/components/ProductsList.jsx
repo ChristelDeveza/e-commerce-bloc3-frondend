@@ -5,7 +5,12 @@ import DeleteProduct from './DeleteProduct';
 import { UserContext } from '../context/UserContext';
 import '../css/ProductList.css';
 // import photo from '../../../commercial/src/main/resources/static/photo/56/heather-ford-5gkYsrH_ebY-unsplash.jpg';
-import photo from '../assets/background2.jpg';
+import legumes from '../assets/legumes.jpg';
+import fruits from '../assets/fruits.jpg';
+import poisson from '../assets/poisson.jpg';
+import viande from '../assets/viande.jpg';
+import vetement from '../assets/Vetement.jpg';
+
 import BackToDashboardButton from './BackToDashboardButton';
 
 function ProductsList() {
@@ -31,7 +36,7 @@ function ProductsList() {
   const handleCategoryFilter = (category) => {
     if (selectedCategories.includes(category)) {
       const updatedCategories = selectedCategories.filter(
-        (c) => c !== category
+        (element) => element !== category
       );
       setSelectedCategories(updatedCategories);
 
@@ -55,15 +60,30 @@ function ProductsList() {
       {' '}
       <h1>Catalogues de nos produits</h1>
       {isOnline && <BackToDashboardButton />}
-      <button onClick={() => handleCategoryFilter('Alimentation')}>
-        {selectedCategories.includes('Alimentation')
-          ? 'Annuler filtre Alimentation'
-          : 'Filtrer Alimentation'}
+      <button onClick={() => handleCategoryFilter('Viande')}>
+        {selectedCategories.includes('Viande')
+          ? 'Annuler filtre Viande'
+          : 'Filtrer Viande'}
       </button>
-      <button onClick={() => handleCategoryFilter('Vêtement')}>
-        {selectedCategories.includes('Vêtement')
-          ? 'Annuler filtre Vêtement'
-          : 'Filtrer Vêtement'}
+      <button onClick={() => handleCategoryFilter('Vêtements')}>
+        {selectedCategories.includes('Vêtements')
+          ? 'Annuler filtre Vêtements'
+          : 'Filtrer Vêtements'}
+      </button>
+      <button onClick={() => handleCategoryFilter('Poisson')}>
+        {selectedCategories.includes('Poisson')
+          ? 'Annuler filtre Poisson'
+          : 'Filtrer Poisson'}
+      </button>
+      <button onClick={() => handleCategoryFilter('Fruits')}>
+        {selectedCategories.includes('Fruits')
+          ? 'Annuler filtre Fruits'
+          : 'Filtrer Fruits'}
+      </button>
+      <button onClick={() => handleCategoryFilter('Légumes')}>
+        {selectedCategories.includes('Légumes')
+          ? 'Annuler filtre Légumes'
+          : 'Filtrer Légumes'}
       </button>
       <ul>
         {filteredProducts.length > 0
@@ -88,7 +108,17 @@ function ProductsList() {
                         </Link>
                       )}
                     </div>
-                    <img src={photo} alt='picture' />
+                    {product.category?.libelle === 'Légumes' ? (
+                      <img src={legumes} alt='picture' />
+                    ) : product.category?.libelle === 'Fruits' ? (
+                      <img src={fruits} alt='picture' />
+                    ) : product.category?.libelle === 'Poisson' ? (
+                      <img src={poisson} alt='picture' />
+                    ) : product.category?.libelle === 'Viande' ? (
+                      <img src={viande} alt='picture' />
+                    ) : product.category?.libelle === 'Vêtements' ? (
+                      <img src={vetement} alt='picture' />
+                    ) : null}{' '}
                     {/* <img src={`../../../commercial/src/main/resources/static/${product.photosImagePath}`} alt='picture' /> */}
                   </div>
                   <div className='note'>{product.category?.libelle}</div>
@@ -128,7 +158,17 @@ function ProductsList() {
                         </Link>
                       )}
                     </div>
-                    <img src={photo} alt='picture' />
+                    {product.category?.libelle === 'Légumes' ? (
+                      <img src={legumes} alt='picture' />
+                    ) : product.category?.libelle === 'Fruits' ? (
+                      <img src={fruits} alt='picture' />
+                    ) : product.category?.libelle === 'Poisson' ? (
+                      <img src={poisson} alt='picture' />
+                    ) : product.category?.libelle === 'Viande' ? (
+                      <img src={viande} alt='picture' />
+                    ) : product.category?.libelle === 'Vêtements' ? (
+                      <img src={vetement} alt='picture' />
+                    ) : null}
 
                     {/* <img
                       src={`../../../commercial/src/main/resources/static/${product?.photosImagePath}`}
