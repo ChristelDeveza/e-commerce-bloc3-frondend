@@ -1,13 +1,21 @@
 /* eslint-disable react/prop-types */
 import axios from 'axios';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 function DeleteProduct({ product }) {
-  //console.log(product.id);
+  const { isOnline } = useContext(UserContext);
 
   function deleteById() {
-    axios
-      .delete(`http://localhost:8080/products/${product.id}`)
-      .catch(() => console.error('error'));
+    if (isOnline) {
+      axios
+        .delete(`http://localhost:8080/products/${product.id}`, {
+          headers: {
+            Authorization: `Bearer ${isOnline}`,
+          },
+        })
+        .catch(() => console.error('error'));
+    }
   }
 
   return (
