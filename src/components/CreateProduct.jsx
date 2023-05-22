@@ -2,8 +2,8 @@
 import axios from 'axios';
 import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-import Logout from './Logout';
 import BackToDashboardButton from './BackToDashboardButton';
+import '../css/CreateProduct.css';
 
 function CreateProduct() {
   const [name, setName] = useState('');
@@ -77,38 +77,54 @@ function CreateProduct() {
   }, []);
 
   return (
-    <div>
+    <div className='create-container'>
       {isOnline ? (
         <div>
-          <h1>Ajouter un produit</h1>
-          <form onSubmit={handleSubmit} encType='multipart/form-data'>
-            <div>
-              <label htmlFor='name'>Libellé du produit : </label>
+          <h1 className='create-title'>Ajouter un produit</h1>
+          <form
+            className='form-container'
+            onSubmit={handleSubmit}
+            encType='multipart/form-data'
+          >
+            <div className='input-container'>
+              <label htmlFor='name' className='create-label'>
+                Libellé du produit :{' '}
+              </label>
               <input
+                className='create-input'
                 type='text'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor='price'>Prix : </label>
+            <div className='input-container'>
+              <label htmlFor='price' className='create-label'>
+                Prix :{' '}
+              </label>
               <input
+                className='create-input'
                 type='number'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor='description'>Description : </label>
-              <input
+            <div className='input-container'>
+              <label htmlFor='description' className='create-label'>
+                Description :{' '}
+              </label>
+              <textarea
+                className='create-input'
                 type='text'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor='category'>Catégorie : </label>
+            <div className='input-container'>
+              <label htmlFor='category' className='create-label'>
+                Catégorie :{' '}
+              </label>
               <select
+                className='create-select'
                 value={categories.id}
                 onChange={(e) => setCategoryId(e.target.value)}
               >
@@ -120,18 +136,21 @@ function CreateProduct() {
                 ))}
               </select>
             </div>
-            <div>
-              <label htmlFor='photo'>Photo : </label>
+            <div className='input-container'>
+              <label htmlFor='photo' className='create-label'>
+                Photo :{' '}
+              </label>
               <input
                 type='file'
                 accept='image/png, image/jpeg, image/jpg'
                 onChange={(e) => setImage(e.target.files[0])}
               />
             </div>
-            <button type='submit'>Ajouter</button>
+            <button className='create-button' type='submit'>
+              Ajouter
+            </button>
           </form>
           <BackToDashboardButton />
-          <Logout />
         </div>
       ) : (
         <p className='message-access'>
