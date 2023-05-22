@@ -31,6 +31,11 @@ function Login() {
         // If error
         .catch((err) => {
           console.error(err);
+          Swal.fire(
+            'Erreur de connexion',
+            "L'identifiant ou le mot de passe est incorrect",
+            'error'
+          );
         });
     } else {
       // If fields are empty

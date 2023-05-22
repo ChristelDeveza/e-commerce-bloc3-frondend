@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import Swal from 'sweetalert2';
 import '../css/CreateDiscount.css';
 import BackToDashboardButton from './BackToDashboardButton';
 
@@ -28,8 +29,18 @@ function CreateDiscount() {
             },
           }
         )
-        .then((res) => console.log(res.data))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          console.log(res.data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Confirmation',
+            text: 'Votre promotion a été enregistrée avec succès !',
+          }).then(() => window.location.reload());
+        })
+        .catch((err) => {
+          console.log(err);
+          Swal.fire('Erreur', "Une erreur s'est produite", 'error');
+        });
     }
   }
 
@@ -37,7 +48,7 @@ function CreateDiscount() {
     <div>
       {isOnline ? (
         <div className='discount-container'>
-          <h1>Créer une nouvelle promotion</h1>
+          <h1 className='discount-title'>Créer une nouvelle promotion</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label className='discount-label' htmlFor='startDate'>
