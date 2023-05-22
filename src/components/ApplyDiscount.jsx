@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import axios from 'axios';
 import { useEffect, useState, useRef, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import '../css/ApplyDiscount.css';
 import BackToDashboardButton from './BackToDashboardButton';
+import Swal from 'sweetalert2';
 
 function ApplyDiscount() {
   const [productById, setProductById] = useState('');
@@ -15,6 +16,7 @@ function ApplyDiscount() {
   const { id } = useParams();
   const { isOnline } = useContext(UserContext);
   const discountIdRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOnline) {
@@ -66,8 +68,20 @@ function ApplyDiscount() {
               }
             );
           })
-          .then((res) => console.log(res.data))
-          .catch((err) => console.log(err));
+          .then((res) => {
+            console.log(res.data);
+            Swal.fire({
+              icon: 'success',
+              title: 'Confirmation',
+              text: 'La promotion a été appliquée avec succès !',
+            }).then(() => {
+              navigate('/products', { replace: true });
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire('Erreur', "Une erreur s'est produite", 'error');
+          });
       }
     }
   }

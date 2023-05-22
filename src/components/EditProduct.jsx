@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import '../css/EditProduct.css';
 import BackToDashboardButton from './BackToDashboardButton';
+import Swal from 'sweetalert2';
 
 function EditProduct() {
   const [name, setName] = useState('');
@@ -17,6 +18,7 @@ function EditProduct() {
   const [discountedPrice, setDiscountedPrice] = useState();
   const { id } = useParams();
   const { isOnline } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Get request by id
@@ -66,10 +68,22 @@ function EditProduct() {
             },
           }
         )
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          console.log(res);
+          Swal.fire({
+            icon: 'success',
+            title: 'Confirmation',
+            text: 'Votre produit a été mis à jour avec succès !',
+          }).then(() => {
+            navigate('/products', { replace: true });
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          Swal.fire('Erreur', "Une erreur s'est produite", 'error');
+        });
     } else {
-      alert('erreur');
+      Swal.fire('Erreur', "Une erreur s'est produite", 'error');
     }
   };
 

@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import BackToDashboardButton from './BackToDashboardButton';
 import '../css/CreateProduct.css';
+import Swal from 'sweetalert2';
 
 function CreateProduct() {
   const [name, setName] = useState('');
@@ -60,12 +61,18 @@ function CreateProduct() {
         })
         .then((res) => {
           console.log(res.data);
+          Swal.fire({
+            icon: 'success',
+            title: 'Confirmation',
+            text: 'Votre produit a été enregistré avec succès !',
+          }).then(() => window.location.reload());
         })
         .catch((error) => {
           console.log(error);
+          Swal.fire('Erreur', "Une erreur s'est produite", 'error');
         });
     } else {
-      alert('erreur');
+      Swal.fire('Erreur', "Une erreur s'est produite", 'error');
     }
   }
 
