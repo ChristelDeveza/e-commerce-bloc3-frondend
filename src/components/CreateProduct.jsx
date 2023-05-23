@@ -15,21 +15,6 @@ function CreateProduct() {
   const [image, setImage] = useState('');
   const { isOnline } = useContext(UserContext);
 
-  // console.log(name, price, description, categoryId, image);
-  console.log(isOnline);
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   axios
-  //     .post('http://localhost:8080/create', {
-  //       name,
-  //       price,
-  //       description,
-  //       categoryId,
-  //     })
-  //     .then((res) => console.log(res.data));
-  // }
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -48,9 +33,6 @@ function CreateProduct() {
 
     formData.append('image', image);
 
-    // for (let key of formData.entries()) {
-    //   console.log(key[0] + ', ' + key[1]);
-    // }
     if (isOnline) {
       axios
         .post('http://localhost:8080/create', formData, {

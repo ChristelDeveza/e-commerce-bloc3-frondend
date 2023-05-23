@@ -19,19 +19,11 @@ function ProductsList() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const { isOnline } = useContext(UserContext);
 
-  // const url = "../../../commercial/src/main/resources/static"
-  console.log(isOnline);
   useEffect(() => {
     axios
       .get('http://localhost:8080/products')
       .then((res) => setProducts(res.data));
   }, []);
-
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:8080/products')
-  //     .then((res) => console.log("test", res.data.filter((el)=>el.category?.libelle === "Alimentation")))
-  // }, []);
 
   const handleCategoryFilter = (category) => {
     if (selectedCategories.includes(category)) {
@@ -58,7 +50,7 @@ function ProductsList() {
   return (
     <div className='container'>
       {' '}
-      <h1>Catalogues de nos produits</h1>
+      <h1>Catalogue de nos produits</h1>
       {isOnline && <BackToDashboardButton />}
       <h3 className='filter'>Fitres par catégories</h3>
       <button

@@ -11,7 +11,6 @@ function ApplyDiscount() {
   const [productById, setProductById] = useState('');
   const [selectDiscount, setSelectDiscount] = useState([]);
   const [selectedDiscount, setSelectedDiscount] = useState(null);
-  console.log(selectDiscount);
   console.log('sel', selectedDiscount);
   const { id } = useParams();
   const { isOnline } = useContext(UserContext);
