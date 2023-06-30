@@ -12,6 +12,7 @@ import viande from '../assets/viande.jpg';
 import vetement from '../assets/Vetement.jpg';
 
 import BackToDashboardButton from './BackToDashboardButton';
+import ExportPdfButton from './ExportPdfButton';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -52,6 +53,7 @@ function ProductsList() {
       {' '}
       <h1>Catalogue de nos produits</h1>
       {isOnline && <BackToDashboardButton />}
+      {isOnline && <ExportPdfButton products={products}/>}
       <h3 className='filter'>Fitres par catégories</h3>
       <button
         className='filter-buttons'
